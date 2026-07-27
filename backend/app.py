@@ -28,6 +28,38 @@ def home():
     })
 
 
+@app.route("/contact", methods=["POST"])
+def contact():
+
+    data = request.get_json()
+
+    name = data.get("name")
+    email = data.get("email")
+    subject = data.get("subject")
+    message = data.get("message")
+
+    if not name or not email or not subject or not message:
+        return jsonify({
+            "message": "All fields are required."
+        }), 400
+
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO contact_messages
+        (name, email, subject, message)
+        VALUES (?, ?, ?, ?)
+    """, (name, email, subject, message))
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({
+        "message": "Message sent successfully!"
+    }), 200
+
+
 # -----------------------------
 # Register API
 # -----------------------------

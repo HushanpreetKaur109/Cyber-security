@@ -1,9 +1,66 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Quiz() {
 
+  const navigate = useNavigate();
+
   const [message, setMessage] = useState("");
   const [showComplete, setShowComplete] = useState(false);
+
+  const completeLab = async () => {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+
+      alert("Please login first.");
+
+      return;
+
+    }
+
+    try {
+
+      const response = await fetch("http://127.0.0.1:5000/complete_lab", {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json",
+
+        },
+
+        body: JSON.stringify({
+
+          user_id: user.id,
+
+          lab_name: "XSS"
+
+        })
+
+      });
+       const data = await response.json();
+
+    if (data.success) {
+
+      alert("🎉 XSS Lab Completed!");
+
+      navigate("/dashboard");
+
+    } else {
+
+      alert(data.message);
+
+    }
+
+  } catch (error) {
+
+    alert("Unable to connect to server.");
+
+  }
+  };
 
   function checkAnswer(answer) {
 
@@ -89,7 +146,10 @@ function Quiz() {
 
         <div className="mt-10 text-center">
 
-          <button
+          <button  
+
+          onClick={completeLab}
+
             className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-bold"
           >
             ✅ Complete XSS Quiz

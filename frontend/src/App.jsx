@@ -10,7 +10,11 @@ import ExploreLabs from "./pages/ExploreLabs";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FeaturesPage from "./pages/FeaturesPage";
-import Learning from "./pages/Learning";
+import Toolkit from "./pages/ToolKit";
+import PasswordStrength from "./components/toolkit/PasswordStrength";
+import PasswordGenerator from "./components/toolkit/PasswordGenerator";
+import HashGenerator from "./components/toolkit/HashGenerator";
+import JWTDecoder from "./components/toolkit/JWTDecoder";
 import JWT from "./pages/JWT";
 import CSRF from "./pages/CSRF";
 import FileUpload from "./pages/FileUpload";
@@ -37,7 +41,15 @@ function App() {
 
       <Route path="/explore" element={<ExploreLabs />} />
 
-      <Route path="/learning" element={<Learning />} />
+      <Route path="/toolkit" element={<Toolkit />} />
+
+      <Route path="/toolkit/password-strength" element={<PasswordStrength />} />
+      
+      <Route path="/toolkit/password-generator" element={<PasswordGenerator />} />
+      
+      <Route path="/toolkit/hash-generator" element={<HashGenerator />} /> 
+      
+     <Route path="/toolkit/jwt-decoder" element={<JWTDecoder />} /> 
 
 
 

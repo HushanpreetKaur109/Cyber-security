@@ -32,10 +32,10 @@ function Hero() {
 
             <div className="mt-10 flex gap-5">
 
-              <Link to="/learning">
+              <Link to="/toolkit">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg transition">
 
-                Start Learning
+                Cybersecurity Toolkit
 
               </button>
               </Link>

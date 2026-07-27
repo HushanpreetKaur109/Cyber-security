@@ -3,7 +3,6 @@ import { useState } from "react";
 function Quiz() {
 
   const questions = [
-
     {
       question: "1. What does JWT stand for?",
       options: [
@@ -58,26 +57,20 @@ function Quiz() {
       ],
       answer: "Verify the JWT signature"
     }
-
   ];
 
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [showComplete, setShowComplete] = useState(false);
 
   const handleChange = (index, option) => {
-
     setAnswers({
-
       ...answers,
-
       [index]: option
-
     });
-
   };
-
-  const submitQuiz = () => {
+    const submitQuiz = () => {
 
     let marks = 0;
 
@@ -95,6 +88,73 @@ function Quiz() {
 
     setSubmitted(true);
 
+    // Show Complete Lab button only if user passes
+    if (marks >= 4) {
+
+      setShowComplete(true);
+
+    } else {
+
+      setShowComplete(false);
+
+    }
+
+  };
+
+  const completeLab = async () => {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+
+      alert("Please login first.");
+
+      return;
+
+    }
+
+    try {
+
+      const response = await fetch("http://127.0.0.1:5000/complete_lab", {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json",
+
+        },
+
+        body: JSON.stringify({
+
+          user_id: user.id,
+
+          lab_name: "JWT"
+
+        })
+
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        alert("🎉 JWT Lab Completed!");
+
+        window.location.href = "/dashboard";
+
+      } else {
+
+        alert(data.message);
+
+      }
+
+    } catch (error) {
+
+      alert("Unable to connect to server.");
+
+    }
+
   };
 
   return (
@@ -106,8 +166,7 @@ function Quiz() {
         📝 JWT Quiz
 
       </h2>
-
-      {questions.map((q, index) => (
+            {questions.map((q, index) => (
 
         <div key={index} className="mb-8">
 
@@ -200,6 +259,27 @@ function Quiz() {
                 Score at least 4 out of 5 to pass.
 
               </p>
+
+            </div>
+
+          )}
+                    {/* Show Complete Lab button only if user passed */}
+
+          {score >= 4 && (
+
+            <div className="mt-10 text-center">
+
+              <button
+
+                onClick={completeLab}
+
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-bold"
+
+              >
+
+                ✅ Complete JWT Lab
+
+              </button>
 
             </div>
 

@@ -1,95 +1,146 @@
 import { Link } from "react-router-dom";
 
 function FeaturesPage() {
+
   const features = [
+
     {
-      title: "SQL Injection",
-      icon: "🗄️",
-      description:
-        "Understand SQL Injection attacks and learn how to prevent them using secure coding practices."
-    },
-    {
-      title: "Cross Site Scripting (XSS)",
+      title: "Interactive Labs",
       icon: "💻",
       description:
-        "Practice reflected, stored and DOM-based XSS vulnerabilities in a safe environment."
+        "Practice SQL Injection, XSS, JWT, CSRF and File Upload vulnerabilities in a safe learning environment."
     },
+
     {
-      title: "JWT Authentication",
-      icon: "🔑",
+      title: "Cybersecurity Toolkit",
+      icon: "🛠️",
       description:
-        "Learn JSON Web Token authentication, common mistakes and secure implementation."
+        "Use Password Generator, Password Strength Checker, Hash Generator and JWT Decoder."
     },
+
     {
-      title: "CSRF",
+      title: "Progress Dashboard",
+      icon: "📊",
+      description:
+        "Track completed labs, unlocked challenges and your learning progress."
+    },
+
+    {
+      title: "Interactive Quizzes",
+      icon: "📝",
+      description:
+        "Test your cybersecurity knowledge through quizzes after every lab."
+    },
+
+    {
+      title: "Certificate Generation",
+      icon: "🎓",
+      description:
+        "Generate your completion certificate after successfully finishing all labs."
+    },
+
+    {
+      title: "Secure Authentication",
+      icon: "🔐",
+      description:
+        "User registration, login and protected dashboard with secure authentication."
+    },
+
+    {
+      title: "Vulnerable & Secure Modes",
       icon: "🛡️",
       description:
-        "Understand Cross-Site Request Forgery attacks and effective protection techniques."
+        "Compare vulnerable code with secure implementations to understand prevention."
     },
+
     {
-      title: "File Upload",
-      icon: "📂",
+      title: "Learning Resources",
+      icon: "📚",
       description:
-        "Explore insecure file upload vulnerabilities and secure file validation methods."
+        "Learn vulnerability theory, prevention techniques and practical examples."
     },
+
     {
-      title: "Path Traversal",
-      icon: "📁",
+      title: "Contact & Feedback",
+      icon: "💬",
       description:
-        "Learn directory traversal attacks and how to prevent unauthorized file access."
+        "Send feedback directly to the backend where messages are securely stored."
+    },
+
+    {
+      title: "Real-world Practice",
+      icon: "🌐",
+      description:
+        "Experience realistic cybersecurity scenarios without affecting production systems."
     }
+
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen">
 
-      {/* Hero Section */}
+    <div className="bg-gray-50 min-h-screen">
+            {/* Hero Section */}
+
       <section className="bg-gradient-to-r from-blue-900 to-cyan-700 text-white py-24">
+
         <div className="max-w-7xl mx-auto px-6 text-center">
 
           <h1 className="text-5xl font-bold">
-            Cybersecurity Learning Labs
+
+            Cybersecurity Platform Features
+
           </h1>
 
           <p className="mt-6 text-xl max-w-3xl mx-auto">
-            Learn cybersecurity through interactive labs designed to teach
-            real-world attacks and secure coding practices.
+
+            Discover the powerful features of VulnLab that make
+            cybersecurity learning practical, interactive and engaging.
+
           </p>
 
         </div>
+
       </section>
 
-      {/* Feature Cards */}
+      {/* Features */}
+
       <section className="max-w-7xl mx-auto py-20 px-6">
 
         <h2 className="text-4xl font-bold text-center mb-14">
-          Explore Our Labs
+
+          Our Platform Features
+
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
 
           {features.map((feature, index) => (
 
             <div
+
               key={index}
+
               className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transition duration-300"
+
             >
 
               <div className="text-6xl">
+
                 {feature.icon}
+
               </div>
 
               <h3 className="text-2xl font-bold mt-6">
+
                 {feature.title}
+
               </h3>
 
-              <p className="text-gray-600 mt-4 leading-7">
-                {feature.description}
-              </p>
+              <p className="text-gray-600 mt-4 leading-8">
 
-              <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-                Start Lab
-              </button>
+                {feature.description}
+
+              </p>
 
             </div>
 
@@ -98,91 +149,57 @@ function FeaturesPage() {
         </div>
 
       </section>
+            {/* Ready To Practice */}
 
-      {/* Learning Process */}
-      <section className="bg-white py-20">
+      <section className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white py-24">
 
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto text-center px-6">
 
-          <h2 className="text-4xl font-bold text-center mb-14">
-            How It Works
+          <h2 className="text-5xl font-bold">
+
+            Ready to Practice?
+
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <p className="mt-6 text-xl leading-8">
 
-            <div className="text-center">
+            Join VulnLab and improve your cybersecurity skills through
+            hands-on learning, practical labs and real-world security
+            challenges.
 
-              <div className="text-6xl">📚</div>
+          </p>
 
-              <h3 className="text-2xl font-bold mt-5">
-                Learn
-              </h3>
+          <div className="mt-10 flex justify-center gap-6 flex-wrap">
 
-              <p className="text-gray-600 mt-3">
-                Understand the theory behind each vulnerability.
-              </p>
+            <Link to="/register">
 
-            </div>
+              <button className="bg-white text-blue-700 px-10 py-4 rounded-xl font-bold hover:bg-gray-200 transition">
 
-            <div className="text-center">
+                Register Now
 
-              <div className="text-6xl">💻</div>
+              </button>
 
-              <h3 className="text-2xl font-bold mt-5">
-                Practice
-              </h3>
+            </Link>
 
-              <p className="text-gray-600 mt-3">
-                Perform attacks safely in realistic lab environments.
-              </p>
+            <Link to="/explore">
 
-            </div>
+              <button className="border-2 border-white px-10 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-700 transition">
 
-            <div className="text-center">
+                Explore Labs
 
-              <div className="text-6xl">🛡️</div>
+              </button>
 
-              <h3 className="text-2xl font-bold mt-5">
-                Secure
-              </h3>
-
-              <p className="text-gray-600 mt-3">
-                Learn secure coding techniques to defend applications.
-              </p>
-
-            </div>
+            </Link>
 
           </div>
 
         </div>
 
       </section>
+          </div>
 
-      {/* CTA */}
-      <section className="bg-gradient-to-r from-blue-700 to-cyan-600 text-white py-24">
-
-        <div className="max-w-4xl mx-auto text-center px-6">
-
-          <h2 className="text-5xl font-bold">
-            Ready to Practice?
-          </h2>
-
-          <p className="mt-6 text-xl">
-            Join VulnLab and improve your cybersecurity skills through hands-on learning.
-          </p>
-
-          <Link to="/register">
-            <button className="mt-10 bg-white text-blue-700 px-10 py-4 rounded-xl font-bold hover:bg-gray-200 transition">
-              Register Now
-            </button>
-          </Link>
-
-        </div>
-
-      </section>
-
-    </div>
   );
+
 }
 
 export default FeaturesPage;

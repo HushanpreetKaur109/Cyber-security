@@ -64,59 +64,59 @@ function Practice() {
 
   };
 
-  const completeLab = async () => {
+  // const completeLab = async () => {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+  //   const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user) {
+  //   if (!user) {
 
-      alert("Please login first.");
+  //     alert("Please login first.");
 
-      return;
+  //     return;
 
-    }
+  //   }
 
-    try {
+  //   try {
 
-      const response = await fetch("http://127.0.0.1:5000/complete_lab", {
+  //     const response = await fetch("http://127.0.0.1:5000/complete_lab", {
 
-        method: "POST",
+  //       method: "POST",
 
-        headers: {
+  //       headers: {
 
-          "Content-Type": "application/json",
+  //         "Content-Type": "application/json",
 
-        },
+  //       },
 
-        body: JSON.stringify({
+    //     body: JSON.stringify({
 
-          user_id: user.id,
+    //       user_id: user.id,
 
-          lab_name: "JWT"
+    //       lab_name: "JWT"
 
-        })
+    //     })
 
-      });
+    //   });
 
-      const data = await response.json();
+    //   const data = await response.json();
 
-      if (data.success) {
+    //   if (data.success) {
 
-        alert("🎉 JWT Lab Completed!");
+    //     alert("🎉 JWT Lab Completed!");
 
-        window.location.href = "/dashboard";
+    //     window.location.href = "/dashboard";
 
-      }
+    //   }
 
-    }
+    // }
 
-    catch {
+  //   catch {
 
-      alert("Unable to connect to server.");
+  //     alert("Unable to connect to server.");
 
-    }
+  //   }
 
-  };
+  // };
 
   return (
 
@@ -300,7 +300,7 @@ function Practice() {
 
       </div>
 
-      {showComplete && (
+      {/* {showComplete && (
 
         <div className="mt-10 text-center">
 
@@ -318,7 +318,7 @@ function Practice() {
 
         </div>
 
-      )}
+      )} */}
 
     </div>
 
